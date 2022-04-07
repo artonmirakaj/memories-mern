@@ -11,16 +11,14 @@ const { mongoConnect } = require('./src/services/mongo');
 const app = express();
 
 const PORT = process.env.PORT || 8080;
+const server = http.createServer(app);
 
-app.use(cors({
-  origin: 'htpp://localhost:3000'
-}));
-app.use(morgan('combined'));
+app.use(cors());
 app.use(express.json());
+app.use(morgan('combined'));
 
 app.use('/posts', postRoutes);
 
-const server = http.createServer(app);
 
 async function startServer() {
   await mongoConnect();
