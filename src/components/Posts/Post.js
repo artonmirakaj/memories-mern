@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Post = ({ post }) => {
+const Post = ({ post, setCurrentId }) => {
   return (
     <div>
       <h3>Creator: {post.creator}</h3>
@@ -10,7 +10,7 @@ const Post = ({ post }) => {
         <div key={post._id}>#{tag}</div>
         ))}
       </div>
-      <button>Edit</button>
+      <button onClick={() => setCurrentId(post._id)}>Edit</button>
       <button>Delete</button>
       <button>Like</button>
     </div>
