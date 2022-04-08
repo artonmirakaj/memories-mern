@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { createPost } from '../../actions/postsAction';
 
 const Form = () => {
   const [postData, setPostData] = useState({
@@ -9,8 +11,12 @@ const Form = () => {
     selectedFile: '',
   })
 
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
-    console.log(e)
+    e.preventDefault();
+    
+    dispatch(createPost(postData));
   }
 
   const handleChange = (e) => {

@@ -7,8 +7,11 @@ const Posts = () => {
   console.log(posts);
   return (
     <div>
-      <Post />
-      <Post />
+      {posts.map((post) => (
+        <div key={post._id}>
+          <Post post={post} />
+        </div>
+      ))}
     </div>
   )
 }
