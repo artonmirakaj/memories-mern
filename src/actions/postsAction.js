@@ -1,4 +1,4 @@
-import { fetchPosts, createNewPost, updateCurrentPost } from '../hooks/requests';
+import { fetchPosts, createNewPost, updateCurrentPost, deletePost } from '../hooks/requests';
 
 export const getPosts = () => async (dispatch) => {
   try {
@@ -32,6 +32,19 @@ export const updatePost = (id, updatePost) => async (dispatch) => {
     dispatch({
       type: 'UPDATE',
       payload: data
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const deletedPost = (id) => async (dispatch) => {
+  try {
+    await deletePost(id);
+
+    dispatch({
+      type: 'DELETE',
+      payload: id
     })
   } catch (error) {
     console.log(error)

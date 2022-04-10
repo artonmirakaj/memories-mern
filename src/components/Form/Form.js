@@ -29,6 +29,7 @@ const Form = ({ currentId, setCurrentId }) => {
       dispatch(createPost(postData));
     }
 
+    clear();
   }
 
   const handleChange = (e) => {
@@ -37,12 +38,20 @@ const Form = ({ currentId, setCurrentId }) => {
   }
 
   const clear = () => {
-    
+    setCurrentId(null)
+    setPostData({
+      title: '',
+      message: '',
+      creator: '',
+      tags: '',
+      selectedFile: '',
+    })
   }
 
   return (
     <div>
-      Create a Memory
+      {currentId ? 'Editing ' : 'Creating '}
+      a Memory
       <form
         autoComplete='off'
         noValidate

@@ -1,6 +1,9 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { deletedPost } from '../../actions/postsAction';
 
 const Post = ({ post, setCurrentId }) => {
+  const dispatch = useDispatch();
   return (
     <div>
       <h3>Creator: {post.creator}</h3>
@@ -11,7 +14,7 @@ const Post = ({ post, setCurrentId }) => {
         ))}
       </div>
       <button onClick={() => setCurrentId(post._id)}>Edit</button>
-      <button>Delete</button>
+      <button onClick={() => dispatch(deletedPost(post._id))}>Delete</button>
       <button>Like</button>
     </div>
   )
