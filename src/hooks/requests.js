@@ -9,3 +9,5 @@ export const createNewPost = (newPost) => axios.post(`${API_URL}/posts`, newPost
 export const updateCurrentPost = (id, updatedPost) => axios.put(`${API_URL}/posts/${id}`, updatedPost);
 
 export const deletePost = (id) => axios.delete(`${API_URL}/posts/${id}`);
+
+export const likePost = (id) => axios.put(`${API_URL}/posts/${id}/likePost`);
